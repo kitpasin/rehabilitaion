@@ -1,11 +1,10 @@
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Banner from "./sections/Banner";
 import About from "./sections/About";
 import News from "./sections/News";
-import { useEffect, useRef, useState } from "react";
 import Event from "./sections/Event";
 import Article from "./sections/Article";
-
 export default function Home({ windowWidth }) {
   const [isScrollToSidebar, setIsScrollToSidebar] = useState(false);
   const aboutRef = useRef(null);
@@ -22,9 +21,9 @@ export default function Home({ windowWidth }) {
         }
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -39,12 +38,15 @@ export default function Home({ windowWidth }) {
         />
         <link rel="canonical" href="/" />
       </Helmet>
-      
+
       <section id="banner">
         <Banner windowWidth={windowWidth} />
       </section>
       <section id="about" ref={aboutRef}>
-        <About windowWidth={windowWidth} isScrollToSidebar={isScrollToSidebar} />
+        <About
+          windowWidth={windowWidth}
+          isScrollToSidebar={isScrollToSidebar}
+        />
       </section>
       <section id="news">
         <News windowWidth={windowWidth} />
